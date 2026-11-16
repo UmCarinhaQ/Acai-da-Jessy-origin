@@ -1,0 +1,35 @@
+/* ===== Painel administrativo (visual escuro para diferenciar do cliente) ===== */
+.adm-topo{position:sticky;top:0;z-index:20;height:64px;background:var(--roxo-2);color:#fff;display:flex;align-items:center;justify-content:space-between;padding:0 20px}
+.adm-topo label{font-size:.8rem;font-weight:600;color:#D9C8EC;display:flex;gap:8px;align-items:center}
+.sel-admin{margin-left:8px;font-size:.7rem;font-weight:800;background:var(--roxo);color:#D9C8EC;padding:3px 8px;border-radius:999px}
+.adm-lado{display:none}
+.adm-main{padding:20px 20px 96px}
+.adm-nav{background:var(--roxo-2);border-color:var(--roxo-2)}
+.adm-nav a,.adm-nav button{color:#D9C8EC} .adm-nav a.on{background:var(--roxo);color:#fff}
+.adm-tit{margin-bottom:16px}
+.kpis{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:16px}
+.kpi{background:#fff;border:1px solid var(--borda);border-radius:16px;padding:14px}
+.kpi p:first-child{font-size:.75rem;font-weight:600;color:var(--suave)} .kpi p:last-child{font-size:1.4rem;font-weight:800;margin-top:2px}
+.kpi.alerta-k{background:#FFF1D6;border-color:#E9C98A}
+.lin{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:12px 0;border-top:1px solid var(--borda)}
+.lin:first-child{border-top:0}
+.lin .acoes{display:flex;gap:8px;flex-wrap:wrap;justify-content:flex-end}
+.ped-card{display:flex;flex-direction:column;gap:8px}
+.est-in{width:90px!important;min-height:40px!important}
+.barras{display:flex;align-items:flex-end;gap:8px;height:150px;padding-top:8px}
+.barras div{flex:1;display:flex;flex-direction:column;justify-content:flex-end;align-items:center;gap:4px;height:100%;font-size:.7rem;color:var(--suave)}
+.barras span{display:block;width:100%;background:var(--roxo);border-radius:6px 6px 0 0;min-height:2px}
+.foto-prev{width:96px;height:96px;border-radius:14px;overflow:hidden;background:var(--lilas)}
+
+@media (min-width:900px){
+  .adm-app{display:flex;min-height:100vh}
+  .adm-lado{display:flex;flex-direction:column;gap:2px;width:236px;flex:none;background:var(--roxo-2);color:#fff;padding:20px 12px;position:sticky;top:0;height:100vh;overflow:auto}
+  .adm-lado .marca{color:#fff;padding:0 12px 4px} .adm-lado .sel-admin{margin:0 0 14px 12px;align-self:flex-start}
+  .adm-lado a,.adm-lado button.lk{display:flex;justify-content:space-between;align-items:center;padding:12px;border-radius:10px;font-weight:600;font-size:.9rem;color:#D9C8EC;background:none;border:0;cursor:pointer;text-align:left}
+  .adm-lado a:hover{background:#3d2459} .adm-lado a.on{background:var(--roxo);color:#fff}
+  .adm-lado .rodape-lado{margin-top:auto;border-top:1px solid #4a3463;padding-top:12px;font-size:.8rem}
+  .adm-topo,.adm-nav{display:none}
+  .adm-corpo{flex:1;min-width:0}
+  .adm-main{padding:28px 32px 48px;max-width:1100px}
+  .kpis{grid-template-columns:repeat(4,1fr)}
+}
