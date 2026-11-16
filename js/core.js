@@ -40,6 +40,52 @@ const DB = {
 
 const Loja = { dados: () => DB.get('loja') };
 
+/* ---------- integração com PostgreSQL ---------- */
+const API = {
+  base: 'http://localhost:3000/api',
+
+  async getProdutos() {
+    const resposta = await fetch(`${this.base}/produtos`);
+
+    if (!resposta.ok) {
+      throw new Error('Não foi possível carregar os produtos.');
+    }
+
+    return await resposta.json();
+  }
+};
+
+async function carregarProdutosAPI() {
+  try {
+    const produtosAPI = await API.getProdutos();
+
+    const produtos = produtosAPI.map(p => ({
+      id: p.id,
+      nome: p.nome,
+      descricao: p.descricao,
+      foto: p.foto_url || '',
+      popular: p.popular,
+      estoque: p.estoque,
+      categoria: p.categoria,
+      tamanhos: p.tamanhos.map(t => ({
+        id: t.id,
+        nome: t.nome,
+        preco: Number(t.preco),
+        maxComplementos: t.max_complementos
+      }))
+    }));
+
+    DB.set('produtos', produtos);
+
+    console.log('Produtos carregados do PostgreSQL:', produtos);
+    return produtos;
+  } catch (erro) {
+    console.error('Erro ao carregar produtos:', erro);
+    return null;
+  }
+}
+
+
 /* ---------- entrega x retirada (escolha guardada entre carrinho e checkout) ---------- */
 const Entrega = {
   get() {
